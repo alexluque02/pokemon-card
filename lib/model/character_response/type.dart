@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'type.dart';
-
 class Type {
   int? slot;
   Type? type;

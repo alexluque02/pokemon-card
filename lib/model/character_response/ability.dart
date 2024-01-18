@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'ability.dart';
-
 class Ability {
   Ability? ability;
   bool? isHidden;

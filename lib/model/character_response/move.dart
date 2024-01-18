@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'move.dart';
 import 'version_group_detail.dart';
 
 class Move {

@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_card/model/character_response/character_response.dart';
+import 'package:pokemon_card/model/character_list_response/character_list_response/result.dart';
 import 'package:flip_card/flip_card.dart';
 
 class PokemonItem extends StatelessWidget {
-  final CharacterResponse character;
+  final Result character;
   const PokemonItem({super.key, required this.character});
+
+  urlImagen() {
+    List<String> urlArray = character.url!.split('');
+    String reversedArray = urlArray.reversed.join();
+    String id = reversedArray.split('')[1];
+    return id;
+  }
 
   @override
   Widget build(BuildContext context) {
-    int? weight = character.weight;
     return Center(
       child: SizedBox(
         width: double.infinity,
@@ -28,7 +34,9 @@ class PokemonItem extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Image.network(character.sprites!.frontDefault!),
+                        Image.network(
+                            // ignore: prefer_interpolation_to_compose_strings
+                            '${'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + urlImagen()}.png'),
                         Text(
                           character.name!.toUpperCase(),
                           style: const TextStyle(fontWeight: FontWeight.bold),
@@ -53,9 +61,9 @@ class PokemonItem extends StatelessWidget {
                             character.name!.toUpperCase(),
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
-                          Text(
-                            '$weight lb',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          const Text(
+                            'Yo soy un pokemon',
+                            style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
